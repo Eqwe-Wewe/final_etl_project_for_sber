@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Отчет за {{date_report}}</title>
+	<style>
+	/* отдельным аргументом css pdfkit по каким-то причинам не видит*/
+	body{
+		font-family: Helvetica;
+		-webkit-font-smoothing: antialiased;
+	}
+	h1{
+		text-align: center;
+		font-size: 25px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		color: black;
+		padding-top: 10px;
+	}
+	h2{
+		text-align: left;
+		font-size: 15px;
+		letter-spacing: 1px;
+		color: black;
+		padding: 10px 0;
+		margin-left: 10px;
+	}
+	p{
+		margin-top: 10px;
+	}
+
+	table{
+		margin: 10px 10px 10px;
+		box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+		border-radius: 5px;
+		font-size: 18px;
+		font-weight: normal;
+		border: none;
+		border-collapse: collapse;
+		/*
+		width: 100%;
+		max-width: 100%;*/
+		/*white-space: nowrap;*/
+		background-color: white;
+	}
+
+	td,th {
+		text-align: center;
+		padding: 10px;
+	}
+
+	td {
+		border-right: 1px solid #f8f8f8;
+		font-size: 13pt;
+	}
+
+	th {
+		color: #ffffff;
+		background: rgb(0,112,60);
+	}
+
+
+	th:nth-child(odd) {
+		color: #ffffff;
+		background: rgb(125, 194, 68);
+	}
+
+	tr:nth-child(even) {
+		background: #F0F0F0;
+	}
+	</style>
+</head>
+<body>
+		<h1>Отчет за {{ date_report }}</h1>
+		<h2>Составил: {{author}} <p>Дата создания: {{date_create}}</p></h2>
+	<div>
+    <table>
+        <thead>
+            <tr>
+                {% for i in title %}
+					<th>{{i}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for items in rows %}
+            <tr>
+                {% for i in items -%}
+                    <td>{{i}}</td>
+                {% endfor -%}
+        {% endfor%}
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
