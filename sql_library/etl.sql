@@ -489,8 +489,7 @@ AS
     EXCEPTION
         WHEN OTHERS THEN
             ROLLBACK;
-            dbms_output.put_line('врн-рн онькн ме рюй');
-            RAISE;
+			RAISE;
 	END create_report;
 
 END project;
