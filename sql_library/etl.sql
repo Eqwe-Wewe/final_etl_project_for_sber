@@ -88,6 +88,10 @@ AS
 		VALUES (v_start, v_end, v_insert_rows, v_update_rows);
 
 		--COMMIT;
+	EXCEPTION
+        WHEN OTHERS THEN
+            ROLLBACK;
+			RAISE;
 
 	END insert_into_dim_terminals_hist;
 
@@ -178,7 +182,12 @@ AS
 		VALUES (v_start, v_end, v_insert_rows, v_update_rows);
 
 		--COMMIT;
-
+	
+	EXCEPTION
+        WHEN OTHERS THEN
+            ROLLBACK;
+			RAISE;
+			
 	END insert_into_dim_clients_hist;
 
 
@@ -245,6 +254,11 @@ AS
 		VALUES (v_start, v_end, v_insert_rows, v_update_rows);
 
 		--COMMIT;
+	EXCEPTION
+        WHEN OTHERS THEN
+            ROLLBACK;
+			RAISE;
+	
 	END insert_into_dim_accounts_hist;
 
 
@@ -308,7 +322,10 @@ AS
 		VALUES (v_start, v_end, v_insert_rows, v_update_rows);
 
 		--COMMIT;
-
+	EXCEPTION
+        WHEN OTHERS THEN
+            ROLLBACK;
+			RAISE;
 	END insert_into_dim_cards_hist;
 
 
@@ -344,6 +361,10 @@ AS
 		OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;
 
 		--COMMIT;
+	EXCEPTION
+        WHEN OTHERS THEN
+            ROLLBACK;
+			RAISE;
 
 	END insert_into_fact_transactions;
 
@@ -471,6 +492,10 @@ AS
 		VALUES (v_start, v_end, v_rowcount, v_last_fraud_dt);
 
 		--COMMIT;
+	EXCEPTION
+        WHEN OTHERS THEN
+            ROLLBACK;
+			RAISE;
 
 	END insert_into_report;
 
